@@ -12,7 +12,7 @@ public class AboutStrings {
 
 	@Koan
 	public void implicitStrings() {
-		assertEquals("just a plain ole string".getClass(), __);
+		assertEquals("just a plain ole string".getClass(), String.class);
 	}
 
 	@Koan
@@ -21,21 +21,21 @@ public class AboutStrings {
 		// practice - generally it is redundant, and done repetitively can be slow
 		String string = new String();
 		String empty = "";
-		assertEquals(string.equals(empty), __);
+		assertEquals(string.equals(empty), true);
 	}
 
 	@Koan
 	public void newStringIsRedundant() {
 		String stringInstance = "zero";
 		String stringReference = new String(stringInstance);
-		assertEquals(stringInstance.equals(stringReference), __);
+		assertEquals(stringInstance.equals(stringReference), true);
 	}
 
 	@Koan
 	public void newStringIsNotIdentical() {
 		String stringInstance = "zero";
 		String stringReference = new String(stringInstance);
-		assertEquals(stringInstance == stringReference, __);
+		assertEquals(stringInstance == stringReference, false);
 	}
 
 	@Koan
@@ -43,7 +43,7 @@ public class AboutStrings {
 		String one = "one";
 		String space = " ";
 		String two = "two";
-		assertEquals(one + space + two, __);
+		assertEquals(one + space + two, "one two");
 	}
 
 	@Koan
@@ -52,17 +52,17 @@ public class AboutStrings {
 		// mutable String like object. It used to be more efficient than using +
 		// to concatenate numerous strings, however this is optimized in the compiler now.
 		// Usually + concatenation is more appropriate than StringBuilder.
-		assertEquals(new StringBuilder("one").append(" ").append("two").toString(), __);
+		assertEquals(new StringBuilder("one").append(" ").append("two").toString(), "one two");
 	}
 
 	@Koan
 	public void readableStringFormattingWithStringFormat() {
-		assertEquals(String.format("%s %s %s", "a", "b", "a"), __);
+		assertEquals(String.format("%s %s %s", "a", "b", "a"), "a b a");
 	}
 
 	@Koan
 	public void extraArgumentsToStringFormatGetIgnored() {
-		assertEquals(String.format("%s %s %s", "a", "b", "c", "d"), __);
+		assertEquals(String.format("%s %s %s", "a", "b", "c", "d"), "a b c");
 	}
 
 	@Koan
@@ -71,24 +71,24 @@ public class AboutStrings {
 			String.format("%s %s %s", "a", "b");
 			fail("No Exception was thrown!");
 		} catch (Exception e) {
-			assertEquals(e.getClass(), __);
-			assertEquals(e.getMessage(), __);
+			assertEquals(e.getClass(), java.util.MissingFormatArgumentException.class);
+			assertEquals(e.getMessage(), "Format specifier '%s'");
 		}
 	}
 
 	@Koan
 	public void readableStringFormattingWithMessageFormat() {
-		assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b"), __);
+		assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b"), "a b a");
 	}
 
 	@Koan
 	public void extraArgumentsToMessageFormatGetIgnored() {
-		assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b", "c"), __);
+		assertEquals(MessageFormat.format("{0} {1} {0}", "a", "b", "c"), "a b a");
 	}
 
 	@Koan
 	public void insufficientArgumentsToMessageFormatDoesNotReplaceTheToken() {
-		assertEquals(MessageFormat.format("{0} {1} {0}", "a"), __);
+		assertEquals(MessageFormat.format("{0} {1} {0}", "a"), "a {1} a");
 	}
 
 }

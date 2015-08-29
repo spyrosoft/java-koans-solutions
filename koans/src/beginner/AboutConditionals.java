@@ -14,7 +14,7 @@ public class AboutConditionals {
 		int x = 1;
 		if (true) 
 			x++;
-		assertEquals(x, __);
+		assertEquals(x, 2);
 	}
 	
 	@Koan
@@ -26,7 +26,7 @@ public class AboutConditionals {
 			x++;
 		else
 			x--;
-		assertEquals(x, __);
+		assertEquals(x, 0);
 	}
 	
 	@Koan
@@ -41,7 +41,7 @@ public class AboutConditionals {
 			x = 10;
 		else
 			x--;
-		assertEquals(x, __);
+		assertEquals(x, 10);
 	}
 	
 	@Koan
@@ -51,11 +51,13 @@ public class AboutConditionals {
 		boolean secretBoolean = false;
 		boolean otherBooleanCondition = true;
 		// Ifs without curly braces are ugly and not recommended but still valid:
-		if (secretBoolean)  x++;
-			if (otherBooleanCondition) x = 10;
+		if (secretBoolean)
+			x++;
+		if (otherBooleanCondition)
+			x = 10;
 		else x--;
 		// Where does this else belong to!?
-		assertEquals(x, __);
+		assertEquals(x, 10);
 	}
 	
 	@Koan
@@ -69,7 +71,7 @@ public class AboutConditionals {
 		}
 		// There are different opinions on where the curly braces go...
 		// But as long as you put them here. You avoid problems as seen above.
-		assertEquals(x, __);
+		assertEquals(x, 2);
 	} 
 	
 	@Koan 
@@ -86,7 +88,7 @@ public class AboutConditionals {
 			default:
 				result += "Nothing";
 		}
-		assertEquals(result, __);
+		assertEquals(result, "Basic One");
 	}
 	
 	@Koan 
@@ -101,7 +103,7 @@ public class AboutConditionals {
 			default:
 				result += "Nothing";
 		}
-		assertEquals(result, __);
+		assertEquals(result, "Basic OneTwoNothing");
 	}
 	
 	@Koan 
@@ -116,7 +118,7 @@ public class AboutConditionals {
 			case 2:
 				result += "Two";
 		}
-		assertEquals(result, __);
+		assertEquals(result, "Basic NothingTwo");
 	}
 	
 	@Koan 
@@ -133,7 +135,7 @@ public class AboutConditionals {
 			default:
 				result += "Nothing";
 		}
-		assertEquals(result, __);
+		assertEquals(result, "Basic Nothing");
 	}
 	
 	@Koan 
@@ -150,6 +152,6 @@ public class AboutConditionals {
 			default:
 				result += "Nothing";
 		}
-		assertEquals(result, __);
+		assertEquals(result, "Basic One");
 	}
 }

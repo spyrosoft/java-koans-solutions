@@ -13,7 +13,7 @@ public class AboutObjects {
 
 	@Koan
 	public void newObjectInstancesCanBeCreatedDirectly() {
-		assertEquals(new Object() instanceof Object, __);
+		assertEquals(new Object() instanceof Object, true);
 	}
 
 	@Koan
@@ -21,8 +21,8 @@ public class AboutObjects {
 		class Foo {}
 
 		Class<?>[] ancestors = getAncestors(new Foo());
-		assertEquals(ancestors[0], __);
-		assertEquals(ancestors[1], __);
+		assertEquals(ancestors[0], Foo.class);
+		assertEquals(ancestors[1], Object.class);
 	}
 
 	@Koan
@@ -30,7 +30,7 @@ public class AboutObjects {
 		Object object = new Object();
 		// TODO: Why is it best practice to ALWAYS override toString?
 		String expectedToString = MessageFormat.format("{0}@{1}", Object.class.getName(), Integer.toHexString(object.hashCode()));
-		assertEquals(expectedToString, __); // hint: object.toString()
+		assertEquals(expectedToString, "java.lang.Object@" + Integer.toHexString(object.hashCode())); // hint: object.toString()
 	}
 
 	@Koan
@@ -41,21 +41,21 @@ public class AboutObjects {
 				return string;
 			}
 		};
-		assertEquals(string + object, __);
+		assertEquals(string + object, "haha");
 	}
 
 	@Koan
 	public void toStringIsTestedForNullWhenInvokedImplicitly() {
 		String string = "string";
-		assertEquals(string + null, __);
+		assertEquals(string + null, "stringnull");
 	}
 
 	private Class<?>[] getAncestors(Object object) {
 		List<Class<?>> ancestors = new ArrayList<Class<?>>();
-		Class<?> clazz = object.getClass();
-		while(clazz != null) {
-			ancestors.add(clazz);
-			clazz = clazz.getSuperclass();	
+		Class<?> unspecifiedObjectClass = object.getClass();
+		while(unspecifiedObjectClass != null) {
+			ancestors.add(unspecifiedObjectClass);
+			unspecifiedObjectClass = unspecifiedObjectClass.getSuperclass();
 		}
 		return ancestors.toArray(new Class[]{});	
 	}

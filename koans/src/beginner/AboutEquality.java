@@ -11,33 +11,33 @@ public class AboutEquality {
 	public void doubleEqualsTestsIfTwoObjectsAreTheSame(){
 		Object object = new Object();
 		Object sameObject = object;
-		assertEquals(object == sameObject, __);
-		assertEquals(object == new Object(), __);
+		assertEquals(object == sameObject, true);
+		assertEquals(object == new Object(), false);
 	}
 
 	@Koan
 	public void equalsMethodByDefaultTestsIfTwoObjectsAreTheSame(){
 		Object object = new Object();
-		assertEquals(object.equals(object), __);
-		assertEquals(object.equals(new Object()), __);
+		assertEquals(object.equals(object), true);
+		assertEquals(object.equals(new Object()), false);
 	}
 
 	@Koan
 	public void equalsMethodCanBeChangedBySubclassesToTestsIfTwoObjectsAreEqual(){
 		Object object = new Integer(1);
-		assertEquals(object.equals(object), __);
-		assertEquals(object.equals(new Integer(1)), __);
+		assertEquals(object.equals(object), true);
+		assertEquals(object.equals(new Integer(1)), true);
 		// Note: This means that for the class 'Object' there is no difference between 'equal' and 'same'
 	}
 
 	@Koan
 	public void objectsNeverEqualNull(){
-		assertEquals(new Object().equals(null), __);
+		assertEquals(new Object().equals(null), false);
 	}
 
 	@Koan
 	public void objectsEqualThemselves(){
 		Object obj = new Object();
-		assertEquals(obj.equals(obj), __);
+		assertEquals(obj.equals(obj), true);
 	}
 }

@@ -45,8 +45,8 @@ public class AboutFileIO {
 		// No flush necessary!
 		fr.close();
 		assertEquals(size, 22);
-		// Why the @#%& doesn't this work?
-		//assertEquals(new String(in), "First line\nSecond line");
+
+		assertEquals(new String(in), "First line\nSecond line\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0");
 		file.delete();
 	}
 
